@@ -21,7 +21,7 @@ class GsbApp extends StatelessWidget {
         primaryColor: const Color(0xFF004A99),
           visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-        home: const LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }

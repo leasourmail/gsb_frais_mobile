@@ -110,7 +110,7 @@ class _SaisieFraisScreenState extends State<SaisieFraisScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AppBar(title: const Text("Justificatif"), backgroundColor: Colors.blue[900]),
+            AppBar(iconTheme: const IconThemeData(color: Colors.white), title: const Text("Justificatif"), backgroundColor: Colors.blue[900]),
             Image.network(
               imageUrl,
               headers: {"Authorization": "Bearer $token"},
@@ -220,11 +220,11 @@ class _SaisieFraisScreenState extends State<SaisieFraisScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(widget.moisAcorriger != null ? "Correction Fiche" : "Saisie Frais",
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [

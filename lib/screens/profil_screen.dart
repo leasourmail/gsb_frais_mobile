@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ProfilScreen extends StatefulWidget {
-  const ProfilScreen({super.key});
+  final String role;
+  const ProfilScreen({super.key, required this.role});
 
   @override
   State<ProfilScreen> createState() => _ProfilScreenState();
@@ -134,26 +135,34 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isManager = _role == 'ROLE_MANAGER';
-    final bool isComptable = _role == 'ROLE_COMPTABLE';
+    // Comme AideScreen : utiliser le rôle passé par le dashboard (widget.role), pas _role (API).
+    // _role vaut "Chargement..." au premier build et peut être vide ou autre format après l'API.
+    final String rolePourCouleurs = widget.role;
+    bool isManager = rolePourCouleurs == 'ROLE_MANAGER';
+    bool isComptable = rolePourCouleurs == 'ROLE_COMPTABLE';
 
+    // Définition des couleurs selon le rôle : manager (indigo), comptable (teal), visiteur (bleu)
     Color primaryColor;
+    Color secondaryColor;
     if (isManager) {
-      primaryColor = Colors.indigo[900]!; // Couleur spécifique Manager
+      primaryColor = Colors.indigo[900]!;
+      secondaryColor = Colors.indigo[700]!;
     } else if (isComptable) {
-      primaryColor = Colors.teal[800]!; // Couleur spécifique Comptable
+      primaryColor = Colors.teal[800]!;
+      secondaryColor = Colors.teal[600]!;
     } else {
-      primaryColor = Colors.blue[900]!; // Couleur Visiteur par défaut
+      primaryColor = Colors.blue[900]!;
+      secondaryColor = Colors.blue[600]!;
     }
 
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text("Mon Profil GSB", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -166,7 +175,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
-                colors: [primaryColor, primaryColor.withOpacity(0.7)],
+                colors: [primaryColor, secondaryColor],
               ),
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(60),

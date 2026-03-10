@@ -94,6 +94,7 @@ class _ConsultationFraisScreenState extends State<ConsultationFraisScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppBar(
+              iconTheme: const IconThemeData(color: Colors.white),
               title: const Text("Justificatif numérique", style: TextStyle(fontSize: 18)),
               backgroundColor: Colors.blue[900],
               elevation: 0,
@@ -146,10 +147,10 @@ class _ConsultationFraisScreenState extends State<ConsultationFraisScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text("Historique des Fiches", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
