@@ -1,4 +1,4 @@
-// Exemple de test widget : vérifier que l'écran de login affiche les bons éléments
+// Test widget : vérifier que l'écran de login affiche les bons éléments
 // À lancer avec : flutter test test/widget_test.dart
 
 import 'package:flutter/material.dart';
