@@ -48,7 +48,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
     try {
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/utilisateurs/mon-profil?email=$email"),
+        Uri.parse("http://localhost:8080/api/utilisateurs/mon-profil?email=$email"),
         headers: {"Authorization": "Bearer $token"},
       );
 
@@ -91,7 +91,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
     try {
       final response = await http.put(
-        Uri.parse("http://10.0.2.2:8080/api/utilisateurs/update-mon-profil"),
+        Uri.parse("http://localhost:8080/api/utilisateurs/update-mon-profil"),
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
