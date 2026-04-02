@@ -31,7 +31,7 @@ class _ValidationFichesComptableScreenState extends State<ValidationFichesCompta
     try {
       final String? token = await _storage.read(key: "jwt");
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/a-payer"),
+        Uri.parse("http://localhost:8080/api/frais/a-payer"),
         headers: {"Authorization": "Bearer $token"},
       );
 

@@ -34,12 +34,12 @@ class _SuiviPaiementsComptableScreenState extends State<SuiviPaiementsComptableS
     final String? token = await _storage.read(key: "jwt");
     try {
       final responseStats = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/stats-comptable"),
+        Uri.parse("http://localhost:8080/api/frais/stats-comptable"),
         headers: {"Authorization": "Bearer $token"},
       );
 
       final responseEnv = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/stats-manager/1"),
+        Uri.parse("http://localhost:8080/api/frais/stats-manager/1"),
         headers: {"Authorization": "Bearer $token"},
       );
 

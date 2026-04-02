@@ -8,7 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 // Déclaration de la classe AuthService
 class AuthService {
-  final String baseUrl = "http://10.0.2.2:8080/api/auth"; // URL de l'API (10.0.2.2 est l'adresse IP de la machine locale pour que l'emulateur Flutter puisse accéder à l'API)
+  final String baseUrl = "http://localhost:8080/api/auth"; // URL de l'API (10.0.2.2 est l'adresse IP de la machine locale pour que l'emulateur Flutter puisse accéder à l'API)
 
   final _storage = const FlutterSecureStorage();
 

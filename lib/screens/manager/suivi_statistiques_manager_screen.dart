@@ -31,7 +31,7 @@ class _SuiviStatistiquesManagerScreenState extends State<SuiviStatistiquesManage
       final String? idMan = await _storage.read(key: "id_utilisateur");
 
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/stats-manager/$idMan"),
+        Uri.parse("http://localhost:8080/api/frais/stats-manager/$idMan"),
         headers: {"Authorization": "Bearer $token"},
       ).timeout(const Duration(seconds: 10));
 

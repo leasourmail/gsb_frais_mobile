@@ -81,7 +81,7 @@ class _ConsultationFraisScreenState extends State<ConsultationFraisScreen> {
   void _afficherJustificatif(String fileName) async {
     final String? token = await _storage.read(key: "jwt");
 
-    final String imageUrl = "http://10.0.2.2:8080/api/frais/uploads/$fileName";
+    final String imageUrl = "http://localhost:8080/api/frais/uploads/$fileName";
 
     if (!mounted) return;
 

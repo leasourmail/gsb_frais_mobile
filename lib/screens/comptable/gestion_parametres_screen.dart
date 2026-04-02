@@ -32,12 +32,12 @@ class _GestionParametresScreenState extends State<GestionParametresScreen> {
     final String? token = await _storage.read(key: "jwt");
     try {
       final resTarifs = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/tarifs-forfaits"),
+        Uri.parse("http://localhost:8080/api/frais/tarifs-forfaits"),
         headers: {"Authorization": "Bearer $token"},
       );
 
       final resStats = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/stats-manager/1"),
+        Uri.parse("http://localhost:8080/api/frais/stats-manager/1"),
         headers: {"Authorization": "Bearer $token"},
       );
 
@@ -58,7 +58,7 @@ class _GestionParametresScreenState extends State<GestionParametresScreen> {
   Future<void> _updateTarif(int id, double montant) async {
     final String? token = await _storage.read(key: "jwt");
     final response = await http.put(
-      Uri.parse("http://10.0.2.2:8080/api/frais/modifier-tarif/$id?montant=$montant"),
+      Uri.parse("http://localhost:8080/api/frais/modifier-tarif/$id?montant=$montant"),
       headers: {"Authorization": "Bearer $token"},
     );
     if (response.statusCode == 200) {
@@ -71,7 +71,7 @@ class _GestionParametresScreenState extends State<GestionParametresScreen> {
   Future<void> _updateEnveloppe(double montant) async {
     final String? token = await _storage.read(key: "jwt");
     final response = await http.put(
-      Uri.parse("http://10.0.2.2:8080/api/frais/modifier-enveloppe?montant=$montant"),
+      Uri.parse("http://localhost:8080/api/frais/modifier-enveloppe?montant=$montant"),
       headers: {"Authorization": "Bearer $token"},
     );
     if (response.statusCode == 200) {

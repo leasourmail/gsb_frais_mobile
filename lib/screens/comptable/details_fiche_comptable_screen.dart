@@ -37,7 +37,7 @@ class _DetailsFicheComptableScreenState extends State<DetailsFicheComptableScree
     final String? token = await _storage.read(key: "jwt");
     try {
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/consulter?email=${widget.fiche['emailVisiteur']}&mois=${widget.fiche['mois']}"),
+        Uri.parse("http://localhost:8080/api/frais/consulter?email=${widget.fiche['emailVisiteur']}&mois=${widget.fiche['mois']}"),
         headers: {"Authorization": "Bearer $token"},
       );
 
@@ -59,7 +59,7 @@ class _DetailsFicheComptableScreenState extends State<DetailsFicheComptableScree
 
     try {
       final response = await http.put(
-        Uri.parse("http://10.0.2.2:8080/api/frais/valider-fiche/${widget.fiche['idFiche']}?nouvelEtat=Mise_en_paiement"),
+        Uri.parse("http://localhost:8080/api/frais/valider-fiche/${widget.fiche['idFiche']}?nouvelEtat=Mise_en_paiement"),
         headers: {"Authorization": "Bearer $token"},
       );
 
@@ -83,7 +83,7 @@ class _DetailsFicheComptableScreenState extends State<DetailsFicheComptableScree
     final String? token = await _storage.read(key: "jwt");
 
     try {
-      final String url = "http://10.0.2.2:8080/api/frais/valider-fiche/${widget.fiche['idFiche']}?nouvelEtat=Refusee&commentaire=${Uri.encodeComponent(motif)}";
+      final String url = "http://localhost:8080/api/frais/valider-fiche/${widget.fiche['idFiche']}?nouvelEtat=Refusee&commentaire=${Uri.encodeComponent(motif)}";
 
       final response = await http.put(
         Uri.parse(url),
@@ -139,7 +139,7 @@ class _DetailsFicheComptableScreenState extends State<DetailsFicheComptableScree
   /// Affiche l'image du justificatif dans une boîte de dialogue
   void _afficherJustificatif(String fileName) async {
     final String? token = await _storage.read(key: "jwt");
-    final String imageUrl = "http://10.0.2.2:8080/api/frais/uploads/$fileName";
+    final String imageUrl = "http://localhost:8080/api/frais/uploads/$fileName";
 
     showDialog(
       context: context,

@@ -38,7 +38,7 @@ class _ConsulterFichesVisiteurScreenState extends State<ConsulterFichesVisiteurS
 
     try {
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/visiteur/${widget.idVisiteur}"),
+        Uri.parse("http://localhost:8080/api/frais/visiteur/${widget.idVisiteur}"),
         headers: {"Authorization": "Bearer $token"},
       );
 

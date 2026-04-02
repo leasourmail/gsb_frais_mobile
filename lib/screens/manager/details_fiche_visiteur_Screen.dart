@@ -39,7 +39,7 @@ class _DetailsFicheVisiteurScreenState extends State<DetailsFicheVisiteurScreen>
     final String? token = await _storage.read(key: "jwt");
     try {
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/frais/consulter?email=${widget.emailVisiteur}&mois=${widget.mois}"),
+        Uri.parse("http://localhost:8080/api/frais/consulter?email=${widget.emailVisiteur}&mois=${widget.mois}"),
         headers: {"Authorization": "Bearer $token"},
       );
 
@@ -118,7 +118,7 @@ class _DetailsFicheVisiteurScreenState extends State<DetailsFicheVisiteurScreen>
     setState(() => _isLoading = true);
     final String? token = await _storage.read(key: "jwt");
 
-    String url = "http://10.0.2.2:8080/api/frais/valider-fiche/${widget.idFiche}?nouvelEtat=$nouvelEtat";
+    String url = "http://localhost:8080/api/frais/valider-fiche/${widget.idFiche}?nouvelEtat=$nouvelEtat";
     if (commentaire != null) {
       url += "&commentaire=${Uri.encodeComponent(commentaire)}";
     }
@@ -143,7 +143,7 @@ class _DetailsFicheVisiteurScreenState extends State<DetailsFicheVisiteurScreen>
   /// Affiche l'image du justificatif dans une boîte de dialogue
   void _afficherJustificatif(String fileName) async {
     final String? token = await _storage.read(key: "jwt");
-    final String imageUrl = "http://10.0.2.2:8080/api/frais/uploads/$fileName";
+    final String imageUrl = "http://localhost:8080/api/frais/uploads/$fileName";
 
     showDialog(
       context: context,

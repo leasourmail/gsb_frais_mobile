@@ -78,7 +78,7 @@ class _SaisieFraisScreenState extends State<SaisieFraisScreen> {
 
     try {
       final response = await http.put(
-        Uri.parse("http://10.0.2.2:8080/api/frais/soumettre-fiche/$_idFiche"),
+        Uri.parse("http://localhost:8080/api/frais/soumettre-fiche/$_idFiche"),
         headers: {
           "Authorization": "Bearer $token",
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ class _SaisieFraisScreenState extends State<SaisieFraisScreen> {
   /// Ouvre une boîte de dialogue pour afficher l'image du justificatif (appel API avec token)
   void _voirJustificatif(String fileName) async {
     final String? token = await _storage.read(key: "jwt");
-    final String imageUrl = "http://10.0.2.2:8080/api/frais/uploads/$fileName";
+    final String imageUrl = "http://localhost:8080/api/frais/uploads/$fileName";
     showDialog(
       context: context,
       builder: (ctx) => Dialog(

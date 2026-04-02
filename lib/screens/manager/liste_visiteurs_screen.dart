@@ -32,7 +32,7 @@ class _ListeVisiteursScreenState extends State<ListeVisiteursScreen> {
     try {
    
       final response = await http.get(
-        Uri.parse("http://10.0.2.2:8080/api/utilisateurs/mes-visiteurs?emailManager=$emailManager"),
+        Uri.parse("http://localhost:8080/api/utilisateurs/mes-visiteurs?emailManager=$emailManager"),
         headers: {"Authorization": "Bearer $token"},
       );
 

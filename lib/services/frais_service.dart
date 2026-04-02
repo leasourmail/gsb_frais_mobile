@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class FraisService {
-  final String baseUrl = "http://10.0.2.2:8080/api/frais";
+  final String baseUrl = "http://localhost:8080/api/frais";
   final _storage = const FlutterSecureStorage();
 
   // Récupère la fiche du mois courant (ou la crée côté backend si elle n'existe pas encore)
@@ -158,7 +158,7 @@ class FraisService {
     final String? token = await _storage.read(key: "jwt");
     try {
       final response = await http.put(
-        Uri.parse("http://10.0.2.2:8080/api/frais/soumettre-fiche/$idFiche"),
+        Uri.parse("http://localhost:8080/api/frais/soumettre-fiche/$idFiche"),
         headers: {"Authorization": "Bearer $token"},
       );
       return response.statusCode == 200;
@@ -172,7 +172,7 @@ class FraisService {
     final token = await _storage.read(key: "jwt");
 
     final response = await http.post(
-      Uri.parse("http://10.0.2.2:8080/api/frais/forfait/groupe"),
+      Uri.parse("http://localhost:8080/api/frais/forfait/groupe"),
       headers: {
         "Authorization": "Bearer $token",
         "Content-Type": "application/json",
